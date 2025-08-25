@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>US-MOTIVATOR</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+<style>
+* {margin:0; padding:0; box-sizing:border-box;}
+html, body {
+    overflow-x:hidden;
+    width:100%;
+    height:100%;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Fond */
+body {
+    background: url('e93ff0e8-641a-40c8-9d3f-d2f22bbd65a9.jpeg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+/* Overlay */
+.overlay {
+    position:absolute;
+    top:0; left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 0.87);
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align:center;
+    padding:20px;
+}
+
+/* Titre */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    font-family: 'Playfair Display', serif;
+    text-shadow: 1px 1px 5px rgba(4, 0, 253, 0.555);
+    color: #ffffff;
+    letter-spacing: 2px;
+    animation: fadeIn 5.5s ease-in-out;
+}
+
+/* Boutons */
+.button-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.button-container a {
+    text-decoration: none;
+    color: #fff;
+    background: linear-gradient(135deg, #000000, #c0003a);
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    font-weight: 600;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+    min-width: 200px;
+    letter-spacing: 1px;
+}
+.button-container a:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #c0003a, #000000);
+    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.349);
+}
+
+/* Footer */
+footer {
+    position:absolute;
+    bottom:10px;
+    width:100%;
+    text-align:center;
+    color:#fff;
+    font-weight:bold;
+    font-size:0.8em; /* petite taille */
+    letter-spacing:1px;
+    text-shadow:1px 1px 4px rgba(0,0,0,0.7);
+}
+
+/* Animation */
+@keyframes fadeIn {
+    0% {opacity:0; transform: translateY(-20px);}
+    100% {opacity:1; transform: translateY(0);}
+}
+</style>
+</head>
+<body>
+<div class="overlay">
+    <h1>✨ US-MOTIVATOR ✨</h1>
+    <div class="button-container">
+        <a href="verset.html">📖 Verset</a>
+        <a href="citation.html">💡 Citation</a>
+        <a href="phrase.html">🔥 Phrase</a>
+    </div>
+</div>
+</body>
+</html>

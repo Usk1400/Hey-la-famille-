@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Citation du jour</title>
+<style>
+body, html {
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    font-weight:bold;
+    height:100%;
+    background:url('usk.jpeg') no-repeat center center fixed;
+    background-size:cover;
+    
+}
+.overlay {
+    position:absolute;top:0;left:0;width:100%;height:100%;
+    background:rgba(0,0,0,0.5);
+    display:flex;justify-content:center;align-items:center;
+}
+.card {
+    background:rgba(0, 0, 0, 0.384);
+    padding:30px;
+    border-radius:30px;
+    text-align:center;
+    color:#fff;
+    max-width:450px;
+    backdrop-filter:blur(10px);
+    position:relative;
+    animation:fadeInCard 2.5s ease-in-out;
+    box-shadow:0 8px 20px rgb(253, 0, 97);
+}
+.card i {
+    font-size:3em;
+    color:#fff;
+    margin-bottom:20px;
+    opacity:0.9;
+}
+.card p {
+    font-size:1.4em;
+    line-height:1.6em;
+    margin-bottom:20px;
+}
+button {
+    padding:10px 25px;
+    font-size:1.2em;
+    font-weight:bold;
+    border:none;
+    border-radius:90px;
+    cursor:pointer;
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+    color:#fff;
+    transition:0.3s;
+}
+button:hover { transform:scale(1.05); }
+#likeCount {
+    font-size:1.1em;
+    margin-top:8px;
+    color:#f1f1f1;
+}
+@keyframes fadeInCard {
+    0%{opacity:0; transform: scale(0.9);}
+    100%{opacity:1; transform: scale(1);}
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="overlay">
+    <div class="card">
+        <i class="fas fa-quote-left"></i>
+        <p id="citation">Chargement...</p>
+        <button id="likeBtn">❤️</button>
+        <p id="likeCount">0 ❤️</p>
+    </div>
+</div>
+
+<script>
+const citations = [
+"Le succès n’est pas final, l’échec n’est pas fatal: c’est le courage de continuer qui compte. - Winston Churchill",
+"Fais de ta vie un rêve, et d’un rêve, une réalité. - Antoine de Saint-Exupéry",
+"La plus grande gloire n’est pas de ne jamais tomber, mais de se relever à chaque chute. - Confucius",
+"Croyez en vous et tout sera possible.",
+"Le futur appartient à ceux qui croient à la beauté de leurs rêves. - Eleanor Roosevelt",
+"Ne regarde pas l’horloge; fais ce qu’elle fait, continue d’avancer. - Sam Levenson",
+"Tout ce que l’esprit de l’homme peut concevoir et croire, il peut l’accomplir. - Napoleon Hill",
+"Agis comme s’il était impossible d’échouer."
+];
+
+const index = new Date().getDate() % citations.length;
+const contentKey = 'citation_' + index;
+document.getElementById('citation').innerText = citations[index];
+
+const likeBtn = document.getElementById('likeBtn');
+const likeCount = document.getElementById('likeCount');
+let likes = parseInt(localStorage.getItem(contentKey) || 0);
+likeCount.innerText = likes + " ❤️";
+
+likeBtn.addEventListener('click', () => {
+    likes++;
+    localStorage.setItem(contentKey, likes);
+    likeCount.innerText = likes + " ❤️";
+});
+</script>
+</body>
+</html>

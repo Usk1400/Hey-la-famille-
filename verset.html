@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Verset du jour</title>
+<style>
+body, html {
+    margin:0;
+    padding:0;
+    font-family:'Poppins',sans-serif;
+    font-weight: bold; /* Texte en gras */
+    height:100%;
+    background:url('usk.jpeg') no-repeat center center fixed;
+    background-size:cover;
+}
+.overlay {
+    position:absolute;top:0;left:0;
+    width:100%;height:100%;
+    background:rgba(0,0,0,0.5);
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+.card {
+    background:rgba(0, 0, 0, 0.384);
+    padding:30px;
+    border-radius:30px;
+    text-align:center;
+    color:#fff;
+    max-width:400px;
+    backdrop-filter:blur(10px);
+    position:relative;
+    animation:fadeInCard 1.5s ease-in-out;
+    box-shadow:0 8px 20px rgba(253, 0, 97);
+}
+.card i {
+    font-size:3em;
+    color:#fff;
+    margin-bottom:20px;
+    opacity:0.9;
+}
+.card p {
+    font-size:1.4em;
+    line-height:1.6em;
+    margin-bottom:20px;
+}
+button {
+    padding:10px 25px;
+    font-size:1.2em;
+    font-weight: bold;
+    border:none;
+    border-radius:90px;
+    cursor:pointer;
+    background: linear-gradient(135deg, #ff4e50, #f9d423);
+    color:#fff;
+    transition:0.3s;
+}
+button:hover {
+    transform:scale(1.05);
+}
+#likeCount {
+    font-size:1.1em;
+    margin-top:8px;
+    color:#f1f1f1;
+}
+@keyframes fadeInCard {
+    0%{opacity:0; transform: scale(0.9);}
+    100%{opacity:1; transform: scale(1);}
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+<div class="overlay">
+    <div class="card">
+        <i class="fas fa-quote-left"></i>
+        <p id="verset">Chargement...</p>
+        <button id="likeBtn">❤️</button>
+        <p id="likeCount">0 ❤️</p>
+    </div>
+</div>
+
+<script>
+const versets = [
+"Jean 3:16 - Car Dieu a tant aimé le monde qu'il a donné son Fils unique...",
+"Psaume 23:1 - L'Éternel est mon berger, je ne manquerai de rien.",
+"Proverbes 3:5 - Confie-toi en l'Éternel de tout ton cœur...",
+"Philippiens 4:13 - Je puis tout par celui qui me fortifie.",
+"Ésaïe 41:10 - Ne crains rien, car je suis avec toi...",
+"Josué 1:9 - Sois fort et courageux. Ne t'effraie point...",
+"Psaume 118:24 - Voici le jour que l'Éternel a fait: réjouissons-nous...",
+"Matthieu 11:28 - Venez à moi, vous tous qui êtes fatigués...",
+"Romains 8:28 - Toutes choses concourent au bien de ceux qui aiment Dieu.",
+"Apocalypse 21:4 - Il essuiera toute larme de leurs yeux..."
+];
+
+// Sélection par jour
+const index = new Date().getDate() % versets.length;
+const contentKey = 'verset_' + index;
+document.getElementById('verset').innerText = versets[index];
+
+// Système de likes illimité
+const likeBtn = document.getElementById('likeBtn');
+const likeCount = document.getElementById('likeCount');
+let likes = parseInt(localStorage.getItem(contentKey) || 0);
+likeCount.innerText = likes + " ❤️";
+
+likeBtn.addEventListener('click', () => {
+    likes++;
+    localStorage.setItem(contentKey, likes);
+    likeCount.innerText = likes + " ❤️";
+});
+</script>
+</body>
+</html>
